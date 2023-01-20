@@ -6,6 +6,8 @@ test.c
 CMakeLists.txt
 *.tga
 
+/build
+
 
 # Prerequisites
 *.d

@@ -36,6 +36,11 @@ void dev_log(tt_image* image) {
 				image->color_map[i].a,
 				image->color_map[i].r);
 	}
+
+
+
+	printf("[DEV]width:\t\t%u\n", image->width);
+	printf("[DEV]height:\t\t%u\n", image->height);
 }
 
 tt_image* tt_load_from_file(const char *file_path) {
@@ -76,8 +81,8 @@ tt_image* tt_load_from_file(const char *file_path) {
 
 	// color map
 	if (image->header.color_map_type == 1) {
-		uint16_t color_map_length = image->header.color_map_specification[2]
-			+ (image->header.color_map_specification[3] << 8);
+		uint16_t color_map_length = image->header.color_map_specification[2] +
+			(image->header.color_map_specification[3] << 8);
 		uint8_t color_map_entry_size = image->header.color_map_specification[4];
 		assert(color_map_entry_size == 32); // TODO: add more colormap entry size support, currently 32 bit only
 		image->color_map = (tt_color*)malloc(sizeof(tt_color)*color_map_length);
@@ -91,13 +96,19 @@ tt_image* tt_load_from_file(const char *file_path) {
 	}
 
 	// image
+	image->width = image->header.image_specification[4] +
+		(image->header.image_specification[5] << 8);
+	image->height = image->header.image_specification[6] +
+		(image->header.image_specification[7] << 8);
 
 	switch (image->header.image_type) {
 		case 0:		// No Image Data Included
 			break;
 		case 1:		// Uncompressed, Color mapped image
+			// TODO: color map to true color
 			break;
 		case 2:		// Uncompressed, True Color Image
+			// TODO: true color
 			break;
 		case 9:		// Run-length encoded, Color mapped image
 			break;

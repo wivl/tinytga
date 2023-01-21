@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <stdbool.h>
 
 #define HEADER_LENGTH 18
 
@@ -21,6 +22,20 @@ void dev_log(tt_image* image) {
 	printf("[DEV]Field 5:\t\t");
 	for(int i = 0; i < 10; i++) { printf("%u ", image->header.image_specification[i]); }
 	puts("");
+	printf("[DEV]Field 6:\t\t");
+	for (int i = 0; i < image->header.id_length; i++) { printf("%u ", image->image_id[i]); }
+	puts("");
+	printf("[DEV]Field 7:\t\t\n");
+	uint16_t color_map_length = image->header.color_map_specification[2]
+			+ (image->header.color_map_specification[3] << 8);
+
+	for (int i = 0; i < color_map_length; i++) {
+		printf("\tColormap %d\t%u %u %u %u\n", i,
+				image->color_map[i].b,
+				image->color_map[i].g,
+				image->color_map[i].a,
+				image->color_map[i].r);
+	}
 }
 
 tt_image* tt_load_from_file(const char *file_path) {
@@ -46,7 +61,6 @@ tt_image* tt_load_from_file(const char *file_path) {
 	image->header.image_specification = (uint8_t*)malloc(10);	 // the length of field 5 is 10 bytes
 	for (int i = 0; i < 10; i++) { image->header.image_specification[i] = image_raw[i+8]; }
 
-	dev_log(image);
 
 	long cp = HEADER_LENGTH; // current_position
 	// ID, color map and pixels
@@ -68,10 +82,34 @@ tt_image* tt_load_from_file(const char *file_path) {
 		assert(color_map_entry_size == 32); // TODO: add more colormap entry size support, currently 32 bit only
 		image->color_map = (tt_color*)malloc(sizeof(tt_color)*color_map_length);
 		// bgra in order
+		for (int i = 0; i < color_map_length; i++) {
+			image->color_map[i].b = image_raw[cp++];
+			image->color_map[i].g = image_raw[cp++];
+			image->color_map[i].r = image_raw[cp++];
+			image->color_map[i].a = image_raw[cp++];
+		}
+	}
+
+	// image
+
+	switch (image->header.image_type) {
+		case 0:		// No Image Data Included
+			break;
+		case 1:		// Uncompressed, Color mapped image
+			break;
+		case 2:		// Uncompressed, True Color Image
+			break;
+		case 9:		// Run-length encoded, Color mapped image
+			break;
+		case 11:	// Run-Length encoded, Black and white image
+			break;
+		default:
+			assert(false);
+			break;
 	}
 
 
-
+	dev_log(image);
 	fclose(image_stream);
 	return image;
 }

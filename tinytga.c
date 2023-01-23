@@ -69,10 +69,10 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 						color_index += image_raw[(*cp)++] << 24;
 						// TODO: color map entry size support more
 						// assert(image->header.color_map_specification[4] == 32);
-						uint32_t color_value = (color_map[color_index-1].b << 24)
-							+ (color_map[color_index].g << 16)
-							+ (color_map[color_index].r << 8)
-							+ (color_map[color_index].a); // bgra
+						uint32_t color_value = (color_map[color_index-1].b)
+							+ (color_map[color_index].g << 8)
+							+ (color_map[color_index].r << 16)
+							+ (color_map[color_index].a << 24); // bgra
 						image->pixels[i] = color_value;
 					}
 					break;
@@ -85,10 +85,10 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 						color_index += image_raw[(*cp)++] << 24;
 						// TODO: color map entry size support more
 						// assert(image->header.color_map_specification[4] == 32);
-						uint32_t color_value = (color_map[color_index-1].b << 24)
-							+ (color_map[color_index].g << 16)
-							+ (color_map[color_index].r << 8)
-							+ 0xFF; // bgra
+						uint32_t color_value = (color_map[color_index-1].b)
+							+ (color_map[color_index].g << 8)
+							+ (color_map[color_index].r << 16)
+							+ 0xFF000000; // bgra
 						image->pixels[i] = color_value;
 					}
 					break;
@@ -101,10 +101,10 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 						color_index += image_raw[(*cp)++] << 24;
 						// TODO: color map entry size support more
 						// assert(image->header.color_map_specification[4] == 32);
-						uint32_t color_value = (color_map[color_index-1].b << 24)
-							+ (color_map[color_index].g << 16)
-							+ (color_map[color_index].r << 8)
-							+ 0xFF; // bgra
+						uint32_t color_value = (color_map[color_index-1].b)
+							+ (color_map[color_index].g << 8)
+							+ (color_map[color_index].r << 16)
+							+ 0xFF000000; // bgra
 						image->pixels[i] = color_value;
 					}
 					break;
@@ -124,10 +124,10 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 						color_index += image_raw[(*cp)++] << 16;
 						// TODO: color map entry size support more
 						// assert(image->header.color_map_specification[4] == 32);
-						uint32_t color_value = (color_map[color_index-1].b << 24)
-							+ (color_map[color_index].g << 16)
-							+ (color_map[color_index].r << 8)
-							+ (color_map[color_index].a); // bgra
+						uint32_t color_value = (color_map[color_index-1].b)
+							+ (color_map[color_index].g << 8)
+							+ (color_map[color_index].r << 16)
+							+ (color_map[color_index].a << 24); // bgra
 						image->pixels[i] = color_value;
 					}
 					break;
@@ -139,10 +139,10 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 						color_index += image_raw[(*cp)++] << 16;
 						// TODO: color map entry size support more
 						// assert(image->header.color_map_specification[4] == 32);
-						uint32_t color_value = (color_map[color_index-1].b << 24)
-							+ (color_map[color_index].g << 16)
-							+ (color_map[color_index].r << 8)
-							+ 0xFF; // bgra
+						uint32_t color_value = (color_map[color_index-1].b)
+							+ (color_map[color_index].g << 8)
+							+ (color_map[color_index].r << 16)
+							+ 0xFF000000; // bgra
 						image->pixels[i] = color_value;
 					}
 					break;
@@ -154,10 +154,10 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 						color_index += image_raw[(*cp)++] << 16;
 						// TODO: color map entry size support more
 						// assert(image->header.color_map_specification[4] == 32);
-						uint32_t color_value = (color_map[color_index-1].b << 24)
-							+ (color_map[color_index].g << 16)
-							+ (color_map[color_index].r << 8)
-							+ 0xFF; // bgra
+						uint32_t color_value = (color_map[color_index-1].b)
+							+ (color_map[color_index].g << 8)
+							+ (color_map[color_index].r << 16)
+							+ 0xFF000000; // bgra
 						image->pixels[i] = color_value;
 					}
 					break;
@@ -176,10 +176,10 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 						color_index += image_raw[(*cp)++] << 8;
 						// TODO: color map entry size support more
 						// assert(image->header.color_map_specification[4] == 32);
-						uint32_t color_value = (color_map[color_index-1].b << 24)
-							+ (color_map[color_index].g << 16)
-							+ (color_map[color_index].r << 8)
-							+ (color_map[color_index].a); // bgra
+						uint32_t color_value = (color_map[color_index-1].b)
+							+ (color_map[color_index].g << 8)
+							+ (color_map[color_index].r << 16)
+							+ (color_map[color_index].a << 24); // bgra
 						image->pixels[i] = color_value;
 					}
 					break;
@@ -191,10 +191,10 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 //						color_index += image_raw[(*cp)++] << 16;
 						// TODO: color map entry size support more
 						// assert(image->header.color_map_specification[4] == 32);
-						uint32_t color_value = (color_map[color_index-1].b << 24)
-							+ (color_map[color_index].g << 16)
-							+ (color_map[color_index].r << 8)
-							+ 0xFF; // bgra
+						uint32_t color_value = (color_map[color_index-1].b)
+							+ (color_map[color_index].g << 8)
+							+ (color_map[color_index].r << 16)
+							+ 0xFF000000; // bgra
 						image->pixels[i] = color_value;
 					}
 					break;
@@ -206,10 +206,10 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 //						color_index += image_raw[(*cp)++] << 16;
 						// TODO: color map entry size support more
 						// assert(image->header.color_map_specification[4] == 32);
-						uint32_t color_value = (color_map[color_index-1].b << 24)
-							+ (color_map[color_index].g << 16)
-							+ (color_map[color_index].r << 8)
-							+ 0xFF; // bgra
+						uint32_t color_value = (color_map[color_index-1].b)
+							+ (color_map[color_index].g << 8)
+							+ (color_map[color_index].r << 16)
+							+ 0xFF000000; // bgra
 						image->pixels[i] = color_value;
 					}
 					break;
@@ -228,10 +228,10 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 //						color_index += image_raw[(*cp)++] << 8;
 						// TODO: color map entry size support more
 						// assert(image->header.color_map_specification[4] == 32);
-						uint32_t color_value = (color_map[color_index-1].b << 24)
-							+ (color_map[color_index].g << 16)
-							+ (color_map[color_index].r << 8)
-							+ (color_map[color_index].a); // bgra
+						uint32_t color_value = (color_map[color_index-1].b)
+							+ (color_map[color_index].g << 8)
+							+ (color_map[color_index].r << 16)
+							+ (color_map[color_index].a << 24); // bgra
 						image->pixels[i] = color_value;
 					}
 					break;
@@ -243,10 +243,10 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 //						color_index += image_raw[(*cp)++] << 16;
 						// TODO: color map entry size support more
 						// assert(image->header.color_map_specification[4] == 32);
-						uint32_t color_value = (color_map[color_index].b << 24)
-							+ (color_map[color_index].g << 16)
-							+ (color_map[color_index].r << 8)
-							+ 0xFF; // bgra
+						uint32_t color_value = (color_map[color_index].b)
+							+ (color_map[color_index].g << 8)
+							+ (color_map[color_index].r << 16)
+							+ 0xFF000000; // bgra
 						image->pixels[i] = color_value;
 					}
 					break;
@@ -258,10 +258,10 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 //						color_index += image_raw[(*cp)++] << 16;
 						// TODO: color map entry size support more
 						// assert(image->header.color_map_specification[4] == 32);
-						uint32_t color_value = (color_map[color_index-1].b << 24)
-							+ (color_map[color_index].g << 16)
-							+ (color_map[color_index].r << 8)
-							+ 0xFF; // bgra
+						uint32_t color_value = (color_map[color_index-1].b)
+							+ (color_map[color_index].g << 8)
+							+ (color_map[color_index].r << 16)
+							+ 0xFF000000; // bgra
 						image->pixels[i] = color_value;
 					}
 					break;

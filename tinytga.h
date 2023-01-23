@@ -3,6 +3,17 @@
 
 #include <stdint.h>
 
+enum image_type {
+	NO_IMAGE_DATA = 0,
+	COLOR_MAPPED_U = 1,
+	TRUE_COLOR_U = 2,
+	BLACK_AND_WHITE_U = 3,
+	COLOR_MAPPED_R = 9,
+	TRUE_COLOR_R = 10,
+	BLACK_AND_WHITE_C = 11,
+	// 32, 33
+};
+
 
 typedef struct {
 	uint8_t id_length;				  // Length of the image ID field (0-255)
@@ -19,13 +30,16 @@ typedef struct {
 	uint8_t a;
 } tt_color;
 
-
+// TODO: rewrite the tt_image struct
+// image type
+// width, height
+// pixel depth
+// pixels
 typedef struct {
-	tt_header header;
-	uint8_t *image_id;
+	uint8_t image_type;
 	uint16_t width;
 	uint16_t height;
-	tt_color *color_map;
+	uint8_t pixel_depth;
 	uint32_t *pixels;
 } tt_image;
 

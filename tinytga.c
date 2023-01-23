@@ -405,23 +405,25 @@ tt_image* tt_load_from_file(const char *file_path) {
 				case 32: // bbbbbbbbggggggggrrrrrrrraaaaaaaa
 					for (int i = 0; i < image->width*image->height; i++) {
 						uint32_t color_value = 0;
-						color_value += image_raw[cp++] << 24;
-						color_value += image_raw[cp++] << 16;
-						color_value += image_raw[cp++] << 8;
 						color_value += image_raw[cp++];
+						color_value += image_raw[cp++] << 8;
+						color_value += image_raw[cp++] << 16;
+						color_value += image_raw[cp++] << 24;
 						image->pixels[i] = color_value;
 					}
 					break;
 				case 24: // bbbbbbbbggggggggrrrrrrrr
 					for (int i = 0; i < image->width*image->height; i++) {
 						uint32_t color_value = 0;
-						color_value += image_raw[cp++] << 16;
-						color_value += image_raw[cp++] << 8;
 						color_value += image_raw[cp++];
-						image->pixels[i] = (color_value << 8) + 0xFF;
+						color_value += image_raw[cp++] << 8;
+						color_value += image_raw[cp++] << 16;
+						image->pixels[i] = color_value + 0xFF000000;
 					}
 					break;
 				case 16: // arrrrrgg gggbbbbb -> gggbbbbb arrrrrgg
+					// TODO: handle 16 bit pixel true color
+					assert(false);
 	 				for (int i = 0; i < image->width*image->height; i++) {
 						uint32_t color_value = 0;
 						color_value += image_raw[cp++] << 8;

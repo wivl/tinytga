@@ -44,12 +44,12 @@ void dev_log(tt_image* image, uint8_t id_length, uint8_t color_map_type,
 	printf("[DEV]width:\t\t%u\n", image->width);
 	printf("[DEV]height:\t\t%u\n", image->height);
 	printf("[DEV]pixels:\t\t%u\n", image->pixels[0]);
-	for (uint32_t i = 0; i < image->height; i++) {
-		for (uint32_t j = 0; j < image->width; j++) {
-			printf("w%uh%u:\t\t%u\n", i, j, image->pixels[i*image->width+j]);
-		}
-		puts("");
-	}
+	// for (uint32_t i = 0; i < image->height; i++) {
+	// 	for (uint32_t j = 0; j < image->width; j++) {
+	// 		printf("w%uh%u:\t\t%u\n", i, j, image->pixels[i*image->width+j]);
+	//	}
+	//	puts("");
+	// }
 }
 
 // color 3
@@ -418,11 +418,11 @@ tt_image* tt_load_from_file(const char *file_path) {
 						color_value += image_raw[cp++] << 16;
 						color_value += image_raw[cp++] << 8;
 						color_value += image_raw[cp++];
-						image->pixels[i] = color_value;
+						image->pixels[i] = (color_value << 8) + 0xFF;
 					}
 					break;
-				case 16:
-					for (int i = 0; i < image->width*image->height; i++) {
+				case 16: // arrrrrgg gggbbbbb -> gggbbbbb arrrrrgg
+	 				for (int i = 0; i < image->width*image->height; i++) {
 						uint32_t color_value = 0;
 						color_value += image_raw[cp++] << 8;
 						color_value += image_raw[cp++];
@@ -430,6 +430,7 @@ tt_image* tt_load_from_file(const char *file_path) {
 					}
 					break;
 				case 8:
+					// TODO: 8 bit
 					for (int i = 0; i < image->width*image->height; i++) {
 						image->pixels[i] = image_raw[cp++];
 					}
@@ -453,4 +454,27 @@ tt_image* tt_load_from_file(const char *file_path) {
 	dev_log(image, id_length, color_map_type, color_map_specification, image_specification, image_id, color_map);
 	fclose(image_stream);
 	return image;
+}
+
+
+void tt_save(tt_image* image, const char* filename) {
+	FILE *file = fopen(filename, "wb");
+	// header
+	uint8_t header[] = "\0\0\2\0\0\0\0\0\0\0\0\0";
+	uint8_t width[2], height[2], others[2];
+	width[0] = image->width & 0x00FF;
+	width[1] = (image->width >> 8) & 0x00FF;
+	height[0] = image->height & 0x00FF;
+	height[1] = (image->height >> 8) & 0x00FF;
+	others[0] = 32;
+	others[1] = 0;
+	//  Write pixel depth and 0
+	fwrite(header, sizeof(uint8_t), 12, file);
+	fwrite(width, sizeof(uint8_t), 2, file);
+	fwrite(height, sizeof(uint8_t), 2, file);
+	fwrite(others, sizeof(uint8_t), 2, file);
+	//  header end
+	fwrite(image->pixels, sizeof(uint32_t), image->width*image->height, file);
+
+	fclose(file);
 }

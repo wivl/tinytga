@@ -2,7 +2,7 @@
 
 English | [简体中文](./README_ZH.md)
 
-tinytga is a simple C library in the form of a header file for reading, creating and saving tga file formats.
+tinytga is a simple C library in the form of a header file for reading, creating and saving [tga](https://en.wikipedia.org/wiki/Truevision_TGA) file formats.
 
 ## Support
 
@@ -38,3 +38,9 @@ The support for pixel depth and colormap depth is as follows:
 
 See [here](./examples).
 
+## Links
+
+More details on tga format can be found at:
+
+* [TGA specification](https://www.gamers.org/dEngine/quake3/TGA.txt)
+* [Truevision TGA FILE FORMAT SPECIFICATION Version 2.0](https://www.dca.fee.unicamp.br/~martino/disciplinas/ea978/tgaffs.pdf)

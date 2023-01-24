@@ -2,7 +2,7 @@
 
 [English](./README.md) | 简体中文
 
-tinytga 是一个功能简单的、针对 tga 图像文件的、头文件形式的 C 语言库，用于 tga 文件格式的读取，创建和保存。
+tinytga 是一个功能简单的、针对 [tga](https://zh.wikipedia.org/wiki/Truevision_TGA) 图像文件的、头文件形式的 C 语言库，用于 tga 文件格式的读取，创建和保存。
 
 ## 支持
 
@@ -38,3 +38,9 @@ tinytga 是一个功能简单的、针对 tga 图像文件的、头文件形式�
 
 见[文件夹](./examples)
 
+## 外部链接
+
+更多 tga 格式细节可以参考
+
+* [TGA specification](https://www.gamers.org/dEngine/quake3/TGA.txt)
+* [Truevision TGA FILE FORMAT SPECIFICATION Version 2.0](https://www.dca.fee.unicamp.br/~martino/disciplinas/ea978/tgaffs.pdf)

@@ -45,5 +45,8 @@ tt_image* tt_create(uint16_t w, uint16_t h, tt_color color);
 /* destory a tt_image variable */
 void tt_destroy(tt_image* image);
 
+/* set dot */
+void tt_set_color(tt_image* image, uint16_t w, uint16_t h, tt_color color);
+
 #endif
 

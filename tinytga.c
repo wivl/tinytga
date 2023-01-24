@@ -489,3 +489,20 @@ void tt_destroy(tt_image *image) {
 	}
 	free(image);
 }
+
+/* set a dot to certain color */
+void tt_set_color(tt_image* image, uint16_t w, uint16_t h, tt_color color) {
+	assert(w < image->width && h < image->height);
+	uint32_t color_value = 0;
+	color_value += color.a;
+	color_value += color.r << 8;
+	color_value += color.g << 16;
+	color_value += color.b << 24;
+
+	uint16_t x = w;
+	uint16_t y = image->height - h;
+
+	uint32_t index = x*image->width+y;
+	// printf("[DEV]set position %u\n", index);
+	image->pixels[y*image->width+x] = color_value;
+}

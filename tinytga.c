@@ -68,8 +68,6 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 						color_index += image_raw[(*cp)++] << 8;
 						color_index += image_raw[(*cp)++] << 16;
 						color_index += image_raw[(*cp)++] << 24;
-						// TODO: color map entry size support more
-						// assert(image->header.color_map_specification[4] == 32);
 						uint32_t color_value = (color_map[color_index-1].b)
 							+ (color_map[color_index].g << 8)
 							+ (color_map[color_index].r << 16)
@@ -84,8 +82,6 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 						color_index += image_raw[(*cp)++] << 8;
 						color_index += image_raw[(*cp)++] << 16;
 						color_index += image_raw[(*cp)++] << 24;
-						// TODO: color map entry size support more
-						// assert(image->header.color_map_specification[4] == 32);
 						uint32_t color_value = (color_map[color_index-1].b)
 							+ (color_map[color_index].g << 8)
 							+ (color_map[color_index].r << 16)
@@ -100,8 +96,6 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 						color_index += image_raw[(*cp)++] << 8;
 						color_index += image_raw[(*cp)++] << 16;
 						color_index += image_raw[(*cp)++] << 24;
-						// TODO: color map entry size support more
-						// assert(image->header.color_map_specification[4] == 32);
 						uint32_t color_value = (color_map[color_index-1].b)
 							+ (color_map[color_index].g << 8)
 							+ (color_map[color_index].r << 16)
@@ -123,8 +117,6 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 						color_index += image_raw[(*cp)++];
 						color_index += image_raw[(*cp)++] << 8;
 						color_index += image_raw[(*cp)++] << 16;
-						// TODO: color map entry size support more
-						// assert(image->header.color_map_specification[4] == 32);
 						uint32_t color_value = (color_map[color_index-1].b)
 							+ (color_map[color_index].g << 8)
 							+ (color_map[color_index].r << 16)
@@ -138,8 +130,6 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 						color_index += image_raw[(*cp)++];
 						color_index += image_raw[(*cp)++] << 8;
 						color_index += image_raw[(*cp)++] << 16;
-						// TODO: color map entry size support more
-						// assert(image->header.color_map_specification[4] == 32);
 						uint32_t color_value = (color_map[color_index-1].b)
 							+ (color_map[color_index].g << 8)
 							+ (color_map[color_index].r << 16)
@@ -153,8 +143,6 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 						color_index += image_raw[(*cp)++];
 						color_index += image_raw[(*cp)++] << 8;
 						color_index += image_raw[(*cp)++] << 16;
-						// TODO: color map entry size support more
-						// assert(image->header.color_map_specification[4] == 32);
 						uint32_t color_value = (color_map[color_index-1].b)
 							+ (color_map[color_index].g << 8)
 							+ (color_map[color_index].r << 16)
@@ -175,8 +163,6 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 						uint32_t color_index = 0;
 						color_index += image_raw[(*cp)++];
 						color_index += image_raw[(*cp)++] << 8;
-						// TODO: color map entry size support more
-						// assert(image->header.color_map_specification[4] == 32);
 						uint32_t color_value = (color_map[color_index-1].b)
 							+ (color_map[color_index].g << 8)
 							+ (color_map[color_index].r << 16)
@@ -189,9 +175,6 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 						uint32_t color_index = 0;
 						color_index += image_raw[(*cp)++];
 						color_index += image_raw[(*cp)++] << 8;
-//						color_index += image_raw[(*cp)++] << 16;
-						// TODO: color map entry size support more
-						// assert(image->header.color_map_specification[4] == 32);
 						uint32_t color_value = (color_map[color_index-1].b)
 							+ (color_map[color_index].g << 8)
 							+ (color_map[color_index].r << 16)
@@ -204,9 +187,6 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 						uint32_t color_index = 0;
 						color_index += image_raw[(*cp)++];
 						color_index += image_raw[(*cp)++] << 8;
-//						color_index += image_raw[(*cp)++] << 16;
-						// TODO: color map entry size support more
-						// assert(image->header.color_map_specification[4] == 32);
 						uint32_t color_value = (color_map[color_index-1].b)
 							+ (color_map[color_index].g << 8)
 							+ (color_map[color_index].r << 16)
@@ -226,9 +206,6 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 					for (int i = 0; i < image->width*image->height; i++) {
 						uint32_t color_index = 0;
 						color_index += image_raw[(*cp)++];
-//						color_index += image_raw[(*cp)++] << 8;
-						// TODO: color map entry size support more
-						// assert(image->header.color_map_specification[4] == 32);
 						uint32_t color_value = (color_map[color_index-1].b)
 							+ (color_map[color_index].g << 8)
 							+ (color_map[color_index].r << 16)
@@ -240,10 +217,6 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 					for (int i = 0; i < image->width*image->height; i++) {
 						uint32_t color_index = 0;
 						color_index += image_raw[(*cp)++];
-//						color_index += image_raw[(*cp)++] << 8;
-//						color_index += image_raw[(*cp)++] << 16;
-						// TODO: color map entry size support more
-						// assert(image->header.color_map_specification[4] == 32);
 						uint32_t color_value = (color_map[color_index].b)
 							+ (color_map[color_index].g << 8)
 							+ (color_map[color_index].r << 16)
@@ -255,10 +228,6 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 					for (int i = 0; i < image->width*image->height; i++) {
 						uint32_t color_index = 0;
 						color_index += image_raw[(*cp)++];
-//						color_index += image_raw[(*cp)++] << 8;
-//						color_index += image_raw[(*cp)++] << 16;
-						// TODO: color map entry size support more
-						// assert(image->header.color_map_specification[4] == 32);
 						uint32_t color_value = (color_map[color_index-1].b)
 							+ (color_map[color_index].g << 8)
 							+ (color_map[color_index].r << 16)
@@ -284,10 +253,6 @@ void _load_color_map(tt_image* image, uint8_t* image_raw, tt_color* color_map, l
 			(image_raw[6] << 8);
 
 	switch (color_map_entry_size) {
-		case 15:
-			fprintf(stderr, "[ERR]Unsupport colormap entry size: %u\n", color_map_entry_size);
-			exit(1);
-			break;
 		case 16:
 			// gggbbbbb arrrrrgg
 			for (int i = 0; i < color_map_length; i++) {
@@ -318,8 +283,76 @@ void _load_color_map(tt_image* image, uint8_t* image_raw, tt_color* color_map, l
 				color_map[i].a = image_raw[(*cp)++];
 			}
 			break;
+		default: /* 15 and more */
+			fprintf(stderr, "[ERR]Unsupport colormap entry size: %u\n", color_map_entry_size);
+			exit(1);
+			break;
+	}
+}
+
+void _handle_pixels(tt_image* image, uint8_t* image_raw, tt_color* color_map, long* cp) {
+	switch (image->image_type) {
+		case NO_IMAGE_DATA:		/* No Image Data Included */
+			image->pixels = NULL;
+			break;
+		case COLOR_MAPPED_U:		// Uncompressed, Color mapped image
+			image->pixels = (uint32_t*)malloc(sizeof(uint32_t)*image->height*image->width);
+			_colormap_to_true_color(image, image_raw, color_map, cp);
+			break;
+		case TRUE_COLOR_U:		/* Uncompressed, True Color Image */
+			image->pixels = (uint32_t*)malloc(sizeof(uint32_t)*image->height*image->width);
+			switch (image->pixel_depth) {
+				case 32: // bbbbbbbbggggggggrrrrrrrraaaaaaaa
+					for (int i = 0; i < image->width*image->height; i++) {
+						uint32_t color_value = 0;
+						color_value += image_raw[(*cp)++];
+						color_value += image_raw[(*cp)++] << 8;
+						color_value += image_raw[(*cp)++] << 16;
+						color_value += image_raw[(*cp)++] << 24;
+						image->pixels[i] = color_value;
+					}
+					break;
+				case 24: // bbbbbbbbggggggggrrrrrrrr
+					for (int i = 0; i < image->width*image->height; i++) {
+						uint32_t color_value = 0;
+						color_value += image_raw[(*cp)++];
+						color_value += image_raw[(*cp)++] << 8;
+						color_value += image_raw[(*cp)++] << 16;
+						image->pixels[i] = color_value + 0xFF000000;
+					}
+					break;
+				case 16: // arrrrrgg gggbbbbb -> gggbbbbb arrrrrgg
+					// TODO: handle 16 bit pixel true color
+					assert(false); // not support yet
+	 				for (int i = 0; i < image->width*image->height; i++) {
+						uint32_t color_value = 0;
+						color_value += image_raw[(*cp)++] << 8;
+						color_value += image_raw[(*cp)++];
+						image->pixels[i] = color_value;
+					}
+					break;
+				case 8:
+					// TODO: handle 8 bit pixel true color
+					assert(false);
+					for (int i = 0; i < image->width*image->height; i++) {
+						image->pixels[i] = image_raw[(*cp)++];
+					}
+					break;
+				default:
+					assert(false);
+					break;
+			}
+			break;
+		case COLOR_MAPPED_R:		// Run-length encoded, Color mapped image
+			// TODO: not support yet
+			assert(false);
+			break;
+		case BLACK_AND_WHITE_C:	// Run-Length encoded, Black and white image
+			// TODO: not support yet
+			break;
 		default:
-			assert(false && (color_map_entry_size > 32 || color_map_entry_size < 15));
+			printf("[ERR]Unsupport image type: %u\n", image->image_type);
+			exit(1);
 			break;
 	}
 }
@@ -330,20 +363,21 @@ void _load_color_map(tt_image* image, uint8_t* image_raw, tt_color* color_map, l
 tt_image* tt_load_from_file(const char *file_path) {
 	FILE *image_stream = fopen(file_path, "rb");
 	if (image_stream == NULL) {
-		fprintf(stderr, "[ERR]File %s not found\n", file_path);
-		exit(1);
+		// fprintf(stderr, "[ERR]File %s not found\n", file_path);
+		fclose(image_stream);
+		return NULL;
 	}
-	// get image file length
+	/* get image file length */
 	fseek(image_stream, 0, SEEK_END);
 	long image_size = ftell(image_stream);
-	printf("[DEBUG]Image size: %ld\n", image_size);
+	// printf("[DEBUG]Image size: %ld\n", image_size);
 	fseek(image_stream, 0, SEEK_SET);
-	// read image file
+	/* read image file */
 	uint8_t *image_raw = (uint8_t*)malloc(image_size);
 	fread(image_raw, sizeof(uint8_t), image_size, image_stream);
-	// 18 bytes header
-	tt_image *image = (tt_image*)malloc(sizeof(tt_image));
+	/* 18 bytes header */
 
+	tt_image *image = (tt_image*)malloc(sizeof(tt_image));
 
 	uint8_t id_length = image_raw[0];
 	uint8_t color_map_type = image_raw[1];
@@ -356,10 +390,9 @@ tt_image* tt_load_from_file(const char *file_path) {
 
 
 
-	long cp = HEADER_LENGTH; // current_position
-							 // ID, color map and pixels
-							 // ID
-							 // fread(image->image_id, sizeof(uint8_t), image->header.id_length, image_stream);
+	long cp = HEADER_LENGTH; /* current_position */
+
+	/* ID */
 	if (id_length != 0) {
 		image_id = (uint8_t*)malloc(id_length);
 		for (int i = 0; i < id_length; i++) {
@@ -368,7 +401,7 @@ tt_image* tt_load_from_file(const char *file_path) {
 		cp += id_length;
 	}
 
-	// color map
+	/* color map */
 	tt_color *color_map = NULL;
 	if (color_map_type == 1) {
 		uint16_t color_map_length = color_map_specification[2] +
@@ -381,88 +414,32 @@ tt_image* tt_load_from_file(const char *file_path) {
 
 	}
 
-	// image
+	/* image */
 	image->width = image_specification[4] +
 		(image_specification[5] << 8);
 	image->height = image_specification[6] +
 		(image_specification[7] << 8);
 	image->pixel_depth = image_specification[8];
 
+	_handle_pixels(image, image_raw, color_map, &cp);
+
 
 	// dev_log(image, id_length, color_map_type, color_map_specification, image_specification, image_id, color_map);
-	switch (image->image_type) {
-		case NO_IMAGE_DATA:		// No Image Data Included
-			break;
-		case COLOR_MAPPED_U:		// Uncompressed, Color mapped image
-									// TODO: color map to true color
-			image->pixels = (uint32_t*)malloc(sizeof(uint32_t)*image->height*image->width);
-			_colormap_to_true_color(image, image_raw, color_map, &cp);
-			break;
-		case TRUE_COLOR_U:		// Uncompressed, True Color Image
-								// TODO: true color
-			image->pixels = (uint32_t*)malloc(sizeof(uint32_t)*image->height*image->width);
-			switch (image->pixel_depth) {
-				case 32: // bbbbbbbbggggggggrrrrrrrraaaaaaaa
-					for (int i = 0; i < image->width*image->height; i++) {
-						uint32_t color_value = 0;
-						color_value += image_raw[cp++];
-						color_value += image_raw[cp++] << 8;
-						color_value += image_raw[cp++] << 16;
-						color_value += image_raw[cp++] << 24;
-						image->pixels[i] = color_value;
-					}
-					break;
-				case 24: // bbbbbbbbggggggggrrrrrrrr
-					for (int i = 0; i < image->width*image->height; i++) {
-						uint32_t color_value = 0;
-						color_value += image_raw[cp++];
-						color_value += image_raw[cp++] << 8;
-						color_value += image_raw[cp++] << 16;
-						image->pixels[i] = color_value + 0xFF000000;
-					}
-					break;
-				case 16: // arrrrrgg gggbbbbb -> gggbbbbb arrrrrgg
-					// TODO: handle 16 bit pixel true color
-					assert(false);
-	 				for (int i = 0; i < image->width*image->height; i++) {
-						uint32_t color_value = 0;
-						color_value += image_raw[cp++] << 8;
-						color_value += image_raw[cp++];
-						image->pixels[i] = color_value;
-					}
-					break;
-				case 8:
-					// TODO: 8 bit
-					for (int i = 0; i < image->width*image->height; i++) {
-						image->pixels[i] = image_raw[cp++];
-					}
-					break;
-				default:
-					assert(false);
-					break;
-			}
-			break;
-		case COLOR_MAPPED_R:		// Run-length encoded, Color mapped image
-			break;
-		case BLACK_AND_WHITE_C:	// Run-Length encoded, Black and white image
-			break;
-		default:
-			printf("[ERR]Unsupport image type: %u\n", image->image_type);
-			exit(1);
-			break;
-	}
-
-
-	dev_log(image, id_length, color_map_type, color_map_specification, image_specification, image_id, color_map);
+	if (image_raw != NULL) free(image_raw);
+	if (image_specification != NULL) free(image_specification);
+	if (color_map_specification != NULL) free(color_map_specification);
+	if (color_map != NULL) free(color_map);
+	if (image_id != NULL) free(image_id);
 	fclose(image_stream);
 	return image;
 }
 
 
 void tt_save(tt_image* image, const char* filename) {
+	assert(image != NULL);
 	FILE *file = fopen(filename, "wb");
-	// header
-	uint8_t header[] = "\0\0\2\0\0\0\0\0\0\0\0\0"; // TRUE_COLOR_U header
+	/* header */
+	uint8_t header[] = "\0\0\2\0\0\0\0\0\0\0\0\0"; /* TRUE_COLOR_U header */
 	uint8_t width[2], height[2], others[2];
 	width[0] = image->width & 0x00FF;
 	width[1] = (image->width >> 8) & 0x00FF;
@@ -474,27 +451,35 @@ void tt_save(tt_image* image, const char* filename) {
 	fwrite(width, sizeof(uint8_t), 2, file);
 	fwrite(height, sizeof(uint8_t), 2, file);
 	fwrite(others, sizeof(uint8_t), 2, file);
-	//  header end
+	/* header end */
 	
+	/* pixels */
 	fwrite(image->pixels, sizeof(uint32_t), image->width*image->height, file);
 
 	fclose(file);
 }
 
+/* Create single-color tga file variable */
 tt_image* tt_create(uint16_t w, uint16_t h, tt_color color) {
 	tt_image *image = (tt_image*)malloc(sizeof(tt_image));
 	image->width = w, image->height = h;
 	image->image_type = TRUE_COLOR_U;
 	image->pixel_depth = 32;
-	image->pixels = (uint32_t*)malloc(sizeof(uint32_t)*w*h);
-	uint32_t pixel_value = 0;// argb saved as bgra
-	pixel_value += color.b + (color.g << 8) + (color.r << 16) + (color.a << 24);
-	for (int i = 0; i < w*h; i++) {
-		image->pixels[i] = pixel_value;
+	if (w*h == 0) {
+		image->pixels = NULL;
+	} else {
+		image->pixels = (uint32_t*)malloc(sizeof(uint32_t)*w*h);
+		uint32_t pixel_value = 0;// argb saved as bgra
+		pixel_value += color.b + (color.g << 8) + (color.r << 16) + (color.a << 24);
+		for (int i = 0; i < w*h; i++) {
+			image->pixels[i] = pixel_value;
+		}
 	}
+	
 	return image;
 }
 
+/* Destroy tt_image variable */
 void tt_destroy(tt_image *image) {
 	if (image == NULL) {
 		return ;

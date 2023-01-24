@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <stdbool.h>
+#include <string.h>
 
 #define HEADER_LENGTH 18
 
@@ -385,7 +386,6 @@ tt_image* tt_load_from_file(const char *file_path) {
 		(image_specification[5] << 8);
 	image->height = image_specification[6] +
 		(image_specification[7] << 8);
-
 	image->pixel_depth = image_specification[8];
 
 
@@ -462,7 +462,7 @@ tt_image* tt_load_from_file(const char *file_path) {
 void tt_save(tt_image* image, const char* filename) {
 	FILE *file = fopen(filename, "wb");
 	// header
-	uint8_t header[] = "\0\0\2\0\0\0\0\0\0\0\0\0";
+	uint8_t header[] = "\0\0\2\0\0\0\0\0\0\0\0\0"; // TRUE_COLOR_U header
 	uint8_t width[2], height[2], others[2];
 	width[0] = image->width & 0x00FF;
 	width[1] = (image->width >> 8) & 0x00FF;
@@ -470,13 +470,37 @@ void tt_save(tt_image* image, const char* filename) {
 	height[1] = (image->height >> 8) & 0x00FF;
 	others[0] = 32;
 	others[1] = 0;
-	//  Write pixel depth and 0
 	fwrite(header, sizeof(uint8_t), 12, file);
 	fwrite(width, sizeof(uint8_t), 2, file);
 	fwrite(height, sizeof(uint8_t), 2, file);
 	fwrite(others, sizeof(uint8_t), 2, file);
 	//  header end
+	
 	fwrite(image->pixels, sizeof(uint32_t), image->width*image->height, file);
 
 	fclose(file);
+}
+
+tt_image* tt_create(uint16_t w, uint16_t h, tt_color color) {
+	tt_image *image = (tt_image*)malloc(sizeof(tt_image));
+	image->width = w, image->height = h;
+	image->image_type = TRUE_COLOR_U;
+	image->pixel_depth = 32;
+	image->pixels = (uint32_t*)malloc(sizeof(uint32_t)*w*h);
+	uint32_t pixel_value = 0;// argb saved as bgra
+	pixel_value += color.b + (color.g << 8) + (color.r << 16) + (color.a << 24);
+	for (int i = 0; i < w*h; i++) {
+		image->pixels[i] = pixel_value;
+	}
+	return image;
+}
+
+void tt_destroy(tt_image *image) {
+	if (image == NULL) {
+		return ;
+	}
+	if (image->pixels != NULL) {
+		free(image->pixels);
+	}
+	free(image);
 }

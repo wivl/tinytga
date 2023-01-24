@@ -14,15 +14,6 @@ enum image_type {
 	// 32, 33
 };
 
-
-typedef struct {
-	uint8_t id_length;				  // Length of the image ID field (0-255)
-	uint8_t color_map_type;			  // Whether a color map is included
-	uint8_t image_type;				  // Compression and color types
-	uint8_t *color_map_specification; // 5 bytes, describes the color map
-	uint8_t *image_specification;	  // 10 bytes, image dimensions and format
-} tt_header;
-
 typedef struct {
 	uint8_t b;
 	uint8_t g;
@@ -30,7 +21,6 @@ typedef struct {
 	uint8_t a;
 } tt_color;
 
-// TODO: rewrite the tt_image struct
 // image type
 // width, height
 // pixel depth
@@ -45,8 +35,15 @@ typedef struct {
 
 /* load tga image from file */
 tt_image* tt_load_from_file(const char* file_path);
+
+/* save a tt_image variable to file */
 void tt_save(tt_image* image, const char* filename);
 
+/* create a tt_image variable */
+tt_image* tt_create(uint16_t w, uint16_t h, tt_color color);
+
+/* destory a tt_image variable */
+void tt_destroy(tt_image* image);
 
 #endif
 

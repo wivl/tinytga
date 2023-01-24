@@ -1,10 +1,12 @@
 # tinytga
 
-tinytga 是一个功能简单的、针对 tga 图像文件的、头文件形式的 C 语言库，用于 tga 文件格式的读取，创建和保存。
+English | [简体中文](./README_ZH.md)
 
-## 支持
+tinytga is a simple C library in the form of a header file for reading, creating and saving tga file formats.
 
-对 tga 文件类型支持情况的细节如下
+## Support
+
+Details of the support for tga file types are as follows:
 
 | image type | value | support |
 |------------|-------|---------|
@@ -16,9 +18,9 @@ tinytga 是一个功能简单的、针对 tga 图像文件的、头文件形式�
 |Runlength encoded RGB images|10|❌|
 |Compressed, black and white images|11|❌|
 |Compressed color-mapped data, using Huffman, Delta, and runlength encoding|32|❌|
-|Compressed color-mapped data, using Huffman, Delta, and runlength encoding.  4-pass quadtree-type process|32|❌|
+|Compressed color-mapped data, using Huffman, Delta, and runlength encoding.  4-pass quadtree-type process|33|❌|
 
-其中，对 pixel 深度和 colormap 深度的支持如下
+The support for pixel depth and colormap depth is as follows:
 
 |colormap entry size|support|
 |-------------------|-------|
@@ -32,7 +34,7 @@ tinytga 是一个功能简单的、针对 tga 图像文件的、头文件形式�
 |Uncompressed, color-mapped images|✅|✅|✅|✅|
 |Uncompressed, RGB images|✅|✅|❌|❌|
 
-## 示例
+## Examples
 
-见[文件夹](./examples)
+See [here](./examples).
 

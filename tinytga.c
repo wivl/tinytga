@@ -506,10 +506,10 @@ void tt_set_color(tt_image* image, uint16_t w, uint16_t h, tt_color color) {
 /* get color from color value */
 tt_color tt_get_color(uint32_t color_value) {
 	tt_color color;
-	color.b = color_value & 0xFF; color_value >>= 8;
-	color.g = color_value & 0xFF; color_value >>= 8;
+	color.a = color_value & 0xFF; color_value >>= 8;
 	color.r = color_value & 0xFF; color_value >>= 8;
-	color.a = color_value & 0xFF;
+	color.g = color_value & 0xFF; color_value >>= 8;
+	color.b = color_value & 0xFF;
 	
 	return color;
 }

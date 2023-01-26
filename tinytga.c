@@ -496,10 +496,8 @@ void tt_set_color(tt_image* image, uint16_t w, uint16_t h, tt_color color) {
 	uint32_t color_value = tt_get_color_value(color);
 
 	uint16_t x = w;
-	uint16_t y = image->height - h;
+	uint16_t y = image->height- 1 - h;
 
-	uint32_t index = x*image->width+y;
-	// printf("[DEV]set position %u\n", index);
 	image->pixels[y*image->width+x] = color_value;
 }
 

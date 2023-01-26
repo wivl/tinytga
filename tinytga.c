@@ -470,7 +470,7 @@ tt_image* tt_create(uint16_t w, uint16_t h, tt_color color) {
 	} else {
 		image->pixels = (uint32_t*)malloc(sizeof(uint32_t)*w*h);
 		uint32_t pixel_value = 0;// argb saved as bgra
-		pixel_value += color.b + (color.g << 8) + (color.r << 16) + (color.a << 24);
+		pixel_value += tt_get_color_value(color);
 		for (int i = 0; i < w*h; i++) {
 			image->pixels[i] = pixel_value;
 		}
@@ -493,11 +493,7 @@ void tt_destroy(tt_image *image) {
 /* set a dot to certain color */
 void tt_set_color(tt_image* image, uint16_t w, uint16_t h, tt_color color) {
 	assert(w < image->width && h < image->height);
-	uint32_t color_value = 0;
-	color_value += color.a;
-	color_value += color.r << 8;
-	color_value += color.g << 16;
-	color_value += color.b << 24;
+	uint32_t color_value = tt_get_color_value(color);
 
 	uint16_t x = w;
 	uint16_t y = image->height - h;
@@ -505,4 +501,25 @@ void tt_set_color(tt_image* image, uint16_t w, uint16_t h, tt_color color) {
 	uint32_t index = x*image->width+y;
 	// printf("[DEV]set position %u\n", index);
 	image->pixels[y*image->width+x] = color_value;
+}
+
+/* get color from color value */
+tt_color tt_get_color(uint32_t color_value) {
+	tt_color color;
+	color.b = color_value & 0xFF; color_value >>= 8;
+	color.g = color_value & 0xFF; color_value >>= 8;
+	color.r = color_value & 0xFF; color_value >>= 8;
+	color.a = color_value & 0xFF;
+	
+	return color;
+}
+
+/* get color value from color */
+uint32_t tt_get_color_value(tt_color color) {
+	uint32_t color_value = 0;
+	color_value += color.a;
+	color_value += color.r << 8;
+	color_value += color.g << 16;
+	color_value += color.b << 24;
+	return color_value;
 }

@@ -491,7 +491,7 @@ void tt_destroy(tt_image *image) {
 }
 
 /* set a dot to certain color */
-void tt_set_color(tt_image* image, uint16_t w, uint16_t h, tt_color color) {
+void tt_set_color(tt_image* image, int w, int h, tt_color color) {
 	assert(w < image->width && h < image->height);
 	uint32_t color_value = tt_get_color_value(color);
 
@@ -520,4 +520,20 @@ uint32_t tt_get_color_value(tt_color color) {
 	color_value += color.g << 16;
 	color_value += color.b << 24;
 	return color_value;
+}
+
+
+void tt_flip_vertically(tt_image *image) {
+	uint32_t *pixels = (uint32_t*)malloc(sizeof(uint32_t)*image->width*image->height);
+	memcpy(pixels, image->pixels, sizeof(uint32_t)*image->width*image->height);
+	// flip
+	for (int i = 0; i < image->height; i++) {
+		for (int j = 0; j < image->width; j++) {
+			int y = image->height - 1 - i;
+			int x = j;
+			image->pixels[i*image->width+j] = pixels[y*image->width+x];
+		}
+	}
+	free(pixels);
+
 }

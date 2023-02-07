@@ -49,7 +49,7 @@ void tt_destroy(tt_image* image);
 void tt_set_color(tt_image* image, int w, int h, tt_color color);
 
 /* get color from color (pixel) value */
-tt_color tt_get_color(uint32_t color_value);
+tt_color tt_make_color(uint32_t color_value);
 
 /* get color value from color */
 uint32_t tt_get_color_value(tt_color color);

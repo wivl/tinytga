@@ -343,12 +343,85 @@ void _handle_pixels(tt_image* image, uint8_t* image_raw, tt_color* color_map, lo
 					break;
 			}
 			break;
+        case TRUE_COLOR_R:
+            // TODO: run length encoded true color, 10
+            assert(false && "Run-length-encoded, but broken");
+			image->pixels = (uint32_t*)malloc(sizeof(uint32_t)*image->height*image->width);
+            int total_pixel = image->width * image->height;
+            int pixel_count = 0;
+            uint8_t header;
+            uint8_t continuous_count;
+            switch (image->pixel_depth) {
+                case 32:
+                    while (pixel_count < total_pixel) {
+                        header = image_raw[(*cp)++];
+                        if (header < 128) { // raw
+                            continuous_count = (header & 0x7F) + 1;
+                            for (int i = 0; i < continuous_count; i++) {
+                                uint32_t color_value = 0;
+                                color_value += image_raw[(*cp)++];
+                                color_value += image_raw[(*cp)++] << 8;
+                                color_value += image_raw[(*cp)++] << 16;
+                                color_value += image_raw[(*cp)++] << 24;   
+
+                                image->pixels[pixel_count++] = color_value;
+                            }
+                        } else { // run-length-encoded
+                            uint32_t color_value = 0;
+                            color_value += image_raw[(*cp)++];
+                            color_value += image_raw[(*cp)++] << 8;
+                            color_value += image_raw[(*cp)++] << 16;
+                            color_value += image_raw[(*cp)++] << 24;
+
+                            continuous_count = (header & 0x7F) + 1;
+                            while (continuous_count--) {
+                                image->pixels[pixel_count++] = color_value;
+                            }
+                        }
+
+                    }
+                    break;
+                case 24:
+                    while (pixel_count < total_pixel) {
+                        header = image_raw[(*cp)++];
+                        if (header < 128) { // raw
+                            continuous_count = (header & 0x7F) + 1;
+                            for (int i = 0; i < continuous_count; i++) {
+                                uint32_t color_value = 0;
+                                color_value += image_raw[(*cp)++];
+                                color_value += image_raw[(*cp)++] << 8;
+                                color_value += image_raw[(*cp)++] << 16;
+                                color_value += 0xFF000000;   
+
+                                image->pixels[pixel_count++] = color_value;
+                            }
+                        } else {
+                            uint32_t color_value = 0;
+                            color_value += image_raw[(*cp)++];
+                            color_value += image_raw[(*cp)++] << 8;
+                            color_value += image_raw[(*cp)++] << 16;
+                            color_value += 0xFF000000;
+
+                            continuous_count = header & 0x7F;
+                            while (continuous_count--) {
+                                image->pixels[pixel_count++] = color_value;
+                            }
+                        }
+                        
+                    }
+                    break;
+                default:
+                    assert(false);
+                    break;
+            }
+
+            break;
 		case COLOR_MAPPED_R:		// Run-length encoded, Color mapped image
-			// TODO: not support yet
+			// not support yet
 			assert(false);
 			break;
 		case BLACK_AND_WHITE_C:	// Run-Length encoded, Black and white image
-			// TODO: not support yet
+			// not support yet
 			break;
 		default:
 			printf("[ERR]Unsupport image type: %u\n", image->image_type);

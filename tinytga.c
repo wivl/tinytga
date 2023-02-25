@@ -611,9 +611,16 @@ void tt_flip_vertically(tt_image *image) {
 
 }
 
-uint32_t tt_get_color_from(tt_image *image, int w, int h) {
+uint32_t tt_get_color_value_from(tt_image *image, int w, int h) {
     assert(image != NULL);
     assert(image->width >= w && image->height >= h);
     return image->pixels[h*image->width+w];
     
+}
+
+tt_color tt_get_color_from(tt_image *image, int w, int h) {
+    assert(image != NULL);
+    assert(image->width >= w && image->height >= h);
+    return tt_make_color(image->pixels[h*image->width+w]);
+
 }

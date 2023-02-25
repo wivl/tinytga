@@ -610,3 +610,10 @@ void tt_flip_vertically(tt_image *image) {
 	free(pixels);
 
 }
+
+uint32_t tt_get_color_from(tt_image *image, int w, int h) {
+    assert(image != NULL);
+    assert(image->width >= w && image->height >= h);
+    return image->pixels[h*image->width+w];
+    
+}

@@ -54,6 +54,8 @@ tt_color tt_make_color(uint32_t color_value);
 /* get color value from color */
 uint32_t tt_get_color_value(tt_color color);
 
+uint32_t tt_get_color_from(tt_image *image, int w, int h);
+
 void tt_flip_vertically(tt_image *image);
 
 #endif

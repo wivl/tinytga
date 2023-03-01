@@ -58,6 +58,8 @@ uint32_t tt_get_color_value_from(tt_image *image, int w, int h);
 
 tt_color tt_get_color_from(tt_image *image, int w, int h);
 
+void tt_color_intensity(tt_color *color, float intensity);
+
 void tt_flip_vertically(tt_image *image);
 
 #endif

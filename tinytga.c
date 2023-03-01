@@ -624,3 +624,10 @@ tt_color tt_get_color_from(tt_image *image, int w, int h) {
     return tt_make_color(image->pixels[h*image->width+w]);
 
 }
+
+void tt_color_intensity(tt_color *color, float intensity) {
+    assert(intensity <= 1 && intensity >= 0);
+    color->r *= intensity;
+    color->g *= intensity;
+    color->b *= intensity;
+}

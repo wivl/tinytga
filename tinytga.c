@@ -65,8 +65,8 @@ void _colormap_to_true_color(tt_image* image, uint8_t* image_raw, tt_color* colo
 					for (int i = 0; i < image->width*image->height; i++) {
 						uint32_t color_index = 0;
 						color_index += image_raw[(*cp)++];
-						color_index += image_raw[(*cp)++] << 8;
-						color_index += image_raw[(*cp)++] << 16;
+						color_index += image_raw[(*cp)++] << 8;						
+                        color_index += image_raw[(*cp)++] << 16;
 						color_index += image_raw[(*cp)++] << 24;
 						uint32_t color_value = (color_map[color_index-1].b)
 							+ (color_map[color_index].g << 8)
@@ -345,7 +345,7 @@ void _handle_pixels(tt_image* image, uint8_t* image_raw, tt_color* color_map, lo
 			break;
         case TRUE_COLOR_R:
             // TODO: run length encoded true color, 10
-            assert(false && "Run-length-encoded, but broken");
+            assert(false && "Run-length-encoded now unsupported.");
 			image->pixels = (uint32_t*)malloc(sizeof(uint32_t)*image->height*image->width);
             int total_pixel = image->width * image->height;
             int pixel_count = 0;
@@ -414,6 +414,28 @@ void _handle_pixels(tt_image* image, uint8_t* image_raw, tt_color* color_map, lo
                     assert(false);
                     break;
             }
+
+            break;
+        case BLACK_AND_WHITE_U:
+            // TODO: type 3
+            image->pixels = (uint32_t*)malloc(sizeof(uint32_t)*image->height*image->width);
+			switch (image->pixel_depth) {
+                case 8:
+					for (int i = 0; i < image->width*image->height; i++) {
+                        tt_color color;
+                        color.b = image_raw[(*cp)];
+                        color.g = image_raw[(*cp)];
+                        color.r = image_raw[(*cp)];
+                        color.a = 0xFF;
+                        (*cp)++;
+                        image->pixels[i] = tt_get_color_value(color);
+
+					}
+					break;
+				default:
+					assert(false && "[ERR]Unsupport pixel depth with image type 3\n");
+					break;
+			}
 
             break;
 		case COLOR_MAPPED_R:		// Run-length encoded, Color mapped image

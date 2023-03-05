@@ -13,7 +13,7 @@ Details of the support for tga file types are as follows:
 |No image data included|0|✅|
 |Uncompressed, color-mapped images|1|✅|
 |Uncompressed, RGB images|2|✅|
-|Uncompressed, black and white images|3|❌|
+|Uncompressed, black and white images|3|✅|
 |Runlength encoded color-mapped images|9|❌|
 |Runlength encoded RGB images|10|❌|
 |Compressed, black and white images|11|❌|
@@ -33,10 +33,18 @@ The support for pixel depth and colormap depth is as follows:
 |--------------------|--|--|--|-|
 |Uncompressed, color-mapped images|✅|✅|✅|✅|
 |Uncompressed, RGB images|✅|✅|❌|❌|
+|Uncompressed, black and white images|-|-|-|✅|
 
 ## Examples
 
+> To be updated..
+
 See [here](./examples).
+
+## TODOs
+
+* Update examples
+* Change to header-only library
 
 ## Links
 

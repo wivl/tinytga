@@ -13,7 +13,7 @@ tinytga 是一个功能简单的、针对 [tga](https://zh.wikipedia.org/wiki/Tr
 |No image data included|0|✅|
 |Uncompressed, color-mapped images|1|✅|
 |Uncompressed, RGB images|2|✅|
-|Uncompressed, black and white images|3|❌|
+|Uncompressed, black and white images|3|✅|
 |Runlength encoded color-mapped images|9|❌|
 |Runlength encoded RGB images|10|❌|
 |Compressed, black and white images|11|❌|
@@ -33,10 +33,18 @@ tinytga 是一个功能简单的、针对 [tga](https://zh.wikipedia.org/wiki/Tr
 |--------------------|--|--|--|-|
 |Uncompressed, color-mapped images|✅|✅|✅|✅|
 |Uncompressed, RGB images|✅|✅|❌|❌|
+|Uncompressed, black and white images|-|-|-|✅|
 
 ## 示例
 
+> 待更新
+
 见[文件夹](./examples)
+
+## TODOs
+
+* 更新示例文件
+* 改成 header—only 形式的库
 
 ## 外部链接
 

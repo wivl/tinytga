@@ -15,7 +15,7 @@ int main(void) {
 		exit(1);
 	}
 	/* print the first pixel value */
-	printf("%u", image->pixels[0]); /* output 32 bit true color value in the form of #AARRGGBB */
+	printf("%u", tt_get_color_value_from(image, 0, 0)); /* output 32 bit true color value in the form of #AARRGGBB (in decimal)*/
 
 	/* destroy image variable */
 	tt_destroy(image);

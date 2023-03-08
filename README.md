@@ -71,7 +71,9 @@ int main(void) {
 
 Here's the result:
 
-![demo.tga](./assets/demo.tga)
+(For showing in the README file I transform tga to png)
+
+![demo.tga](./assets/demo.png)
 
 More examples see [./examples](./examples).
 

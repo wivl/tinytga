@@ -71,7 +71,9 @@ int main(void) {
 
 效果：
 
-![demo.tga](./assets/demo.tga)
+(为了在 README 中显示，我将 tga 文件转码成了 png 文件)
+
+![demo.tga](./assets/demo.png)
 
 更多例子见 [./examples](./examples).
 

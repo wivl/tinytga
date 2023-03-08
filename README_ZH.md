@@ -37,13 +37,50 @@ tinytga 是一个功能简单的、针对 [tga](https://zh.wikipedia.org/wiki/Tr
 
 ## 示例
 
-> 待更新
+```C
+#include "tinytga.h"
+#include <assert.h>
+#include <stdlib.h>
 
-见[文件夹](./examples)
+#define WIDTH 800
+#define HEIGHT 600
+
+int main(void) {
+    tt_color black = tt_make_color(0xFF000000);
+    tt_color white = tt_make_color(0xFFFFFFFF);
+
+    tt_image *image = tt_create(WIDTH, HEIGHT, black);
+
+    assert(image != NULL);
+
+    // w and h starts from 0
+    for (int h = 200-1; h <= 400-1; h++) {
+        for (int w = 200-1; w <= 600-1; w++) {
+            tt_set_color(image, w, h, white);
+        }
+    }
+
+    const char *filename = "demo.tga";
+    tt_save(image, filename);
+
+    tt_destroy(image);
+
+    return 0;
+}
+```
+
+效果：
+
+![demo.tga](./assets/demo.tga)
+
+更多例子见 [./examples](./examples).
+
+## 文档
+
+See [./docs](./docs).
 
 ## TODOs
 
-* 更新示例文件
 * 改成 header—only 形式的库
 
 ## 外部链接

@@ -81,10 +81,6 @@ More examples see [./examples](./examples).
 
 See [./docs](./docs).
 
-## TODOs
-
-* Change to header-only library
-
 ## Links
 
 More details on tga format can be found at:

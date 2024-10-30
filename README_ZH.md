@@ -81,10 +81,6 @@ int main(void) {
 
 See [./docs](./docs).
 
-## TODOs
-
-* 改成 header—only 形式的库
-
 ## 外部链接
 
 更多 tga 格式细节可以参考

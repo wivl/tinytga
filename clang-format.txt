@@ -1,0 +1,8 @@
+BasedOnStyle: Microsoft   # 基于 Google 风格，或者使用其他默认风格，如 LLVM、Microsoft 等。
+IndentWidth: 4         # 设置缩进宽度为 4 个空格。
+TabWidth: 4            # 设置 Tab 的宽度为 4 个空格。
+UseTab: Never          # 永远不使用制表符，使用空格代替。
+BreakBeforeBraces: Attach # 大括号不换行。
+ColumnLimit: 80       # 设置一行的最大字符数为 120（默认是 80）。
+AllowShortFunctionsOnASingleLine: Inline # 允许短函数写在一行。
+AccessModifierOffset: -4

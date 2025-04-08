@@ -560,10 +560,10 @@ tt_color tt_make_color(uint32_t color_value) {
 /* get color value from color */
 uint32_t tt_get_color_value(tt_color color) {
 	uint32_t color_value = 0;
-	color_value += color.a << 24;
-	color_value += color.r << 16;
-	color_value += color.g << 8;
-	color_value += color.b;
+	color_value += (uint32_t)color.a << 24;
+	color_value += (uint32_t)color.r << 16;
+	color_value += (uint32_t)color.g << 8;
+	color_value += (uint32_t)color.b;
 	return color_value;
 }
 
